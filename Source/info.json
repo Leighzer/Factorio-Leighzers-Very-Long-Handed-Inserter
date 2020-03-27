@@ -1,0 +1,10 @@
+{
+  "name": "leighzerverylonghandedinserter",
+  "version": "0.1.0",
+  "title": "Leighzer's Very Long Handed Inserter",
+  "author": "Leighzer",
+  "contact": "Please message me on the factorio forums my username is leighzer.",  
+  "factorio_version": "0.18",
+  "dependencies": [ "base >= 0.18.13"],
+  "description": "Small mod that adds a new inserter with a 3 tile reach."
+}
