@@ -48,8 +48,8 @@ data:extend({
     icon = "__leighzerverylonghandedinserter__/graphics/icons/inserter.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
-    minable = {mining_time = 0.1, result = "inserter"},
-    max_health = 150,
+    minable = {mining_time = 0.1, result = "very-long-handed-inserter"},
+    max_health = 160,
     corpse = "small-remnants",--"inserter-remnants",
     dying_explosion = "inserter-explosion",
     resistances =
@@ -62,16 +62,16 @@ data:extend({
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     damaged_trigger_effect = hit_effects.entity(),
-    energy_per_movement = "12kJ", --5kJ
-    energy_per_rotation = "12kJ",
+    energy_per_movement = "8kJ", --5kJ
+    energy_per_rotation = "8kJ",
     energy_source =
     {
       type = "electric",
       usage_priority = "secondary-input",
       drain = "0.4kW",--"0.4kW"
     },
-    extension_speed = 0.03,
-    rotation_speed = 0.014,
+    rotation_speed = 0.02,
+    extension_speed = 0.0457,
     fast_replaceable_group = "inserter",    
     vehicle_impact_sound = sounds.generic_impact,
     working_sound =
