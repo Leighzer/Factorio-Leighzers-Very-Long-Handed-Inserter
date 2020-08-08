@@ -1,4 +1,8 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.2
+  Changes:
+    - Update icon graphic to HD version.
+---------------------------------------------------------------------------------------------------
 Version: 0.1.1
   Changes:
     - Changes to buff very long handed inserter to be more similar in speed to long handed inserter given its position in the tech tree.

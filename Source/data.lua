@@ -222,7 +222,9 @@ data:extend({
   }
 })
 
-table.insert(data.raw.technology["logistics-2"].effects,{
-  type = "unlock-recipe",
-  recipe = "very-long-handed-inserter"
-})
+if data.raw.technology["logistics-2"] then
+  table.insert(data.raw.technology["logistics-2"].effects,{
+    type = "unlock-recipe",
+    recipe = "very-long-handed-inserter"
+  })
+end
