@@ -7,8 +7,8 @@ if not leighzermods.leighzerverylonghandedinserter then
 end
 
 
-local hit_effects = require ("__base__.prototypes.entity.demo-hit-effects")
-local sounds = require("__base__.prototypes.entity.demo-sounds")
+local hit_effects = require ("__base__.prototypes.entity.hit-effects")
+local sounds = require("__base__.prototypes.entity.sounds")
 
 --add item
 --add recipe
@@ -20,7 +20,7 @@ data:extend({
   {
     type = "item",
     name = "very-long-handed-inserter",
-    icon = "__leighzerverylonghandedinserter__/graphics/icons/inserter.png",
+    icon = "__leighzerverylonghandedinserter__/graphics/icons/very-long-handed-inserter.png",
     icon_size = 64, icon_mipmaps = 4,
     subgroup = "inserter",
     order = "c[very-long-handed-inserter]",
@@ -35,9 +35,8 @@ data:extend({
     ingredients =
     {
         {"iron-stick",4},
-        {"iron-gear-wheel", 3},
-        {"iron-plate", 2},
-        {"inserter", 1}     
+        {"iron-gear-wheel", 3},        
+        {"long-handed-inserter", 1}     
     },
     result = "very-long-handed-inserter"
   },
@@ -45,13 +44,13 @@ data:extend({
   {
     type = "inserter",
     name = "very-long-handed-inserter",
-    icon = "__leighzerverylonghandedinserter__/graphics/icons/inserter.png",
+    icon = "__leighzerverylonghandedinserter__/graphics/icons/very-long-handed-inserter.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.1, result = "very-long-handed-inserter"},
     max_health = 160,
-    corpse = "small-remnants",--"inserter-remnants",
-    dying_explosion = "inserter-explosion",
+    corpse = "very-long-handed-inserter-remnants",
+    dying_explosion = "medium-explosion",
     resistances =
     {
       {
@@ -105,13 +104,13 @@ data:extend({
     },
     hand_base_picture =
     {
-      filename = "__leighzerverylonghandedinserter__/graphics/entity/inserter/inserter-hand-base.png",
+      filename = "__leighzerverylonghandedinserter__/graphics/entity/very-long-handed-inserter/very-long-handed-inserter-hand-base.png",
       priority = "extra-high",
       width = 8,
       height = 33,
       hr_version =
       {
-        filename = "__leighzerverylonghandedinserter__/graphics/entity/inserter/hr-inserter-hand-base.png",
+        filename = "__leighzerverylonghandedinserter__/graphics/entity/very-long-handed-inserter/hr-very-long-handed-inserter-hand-base.png",
         priority = "extra-high",
         width = 32,
         height = 136,
@@ -120,13 +119,13 @@ data:extend({
     },
     hand_closed_picture =
     {
-      filename = "__leighzerverylonghandedinserter__/graphics/entity/inserter/inserter-hand-closed.png",
+      filename = "__leighzerverylonghandedinserter__/graphics/entity/very-long-handed-inserter/very-long-handed-inserter-hand-closed.png",
       priority = "extra-high",
       width = 18,
       height = 41,
       hr_version =
       {
-        filename = "__leighzerverylonghandedinserter__/graphics/entity/inserter/hr-inserter-hand-closed.png",
+        filename = "__leighzerverylonghandedinserter__/graphics/entity/very-long-handed-inserter/hr-very-long-handed-inserter-hand-closed.png",
         priority = "extra-high",
         width = 72,
         height = 164,
@@ -135,13 +134,13 @@ data:extend({
     },
     hand_open_picture =
     {
-      filename = "__leighzerverylonghandedinserter__/graphics/entity/inserter/inserter-hand-open.png",
+      filename = "__leighzerverylonghandedinserter__/graphics/entity/very-long-handed-inserter/very-long-handed-inserter-hand-open.png",
       priority = "extra-high",
       width = 18,
       height = 41,
       hr_version =
       {
-        filename = "__leighzerverylonghandedinserter__/graphics/entity/inserter/hr-inserter-hand-open.png",
+        filename = "__leighzerverylonghandedinserter__/graphics/entity/very-long-handed-inserter/hr-very-long-handed-inserter-hand-open.png",
         priority = "extra-high",
         width = 72,
         height = 164,
@@ -199,14 +198,14 @@ data:extend({
     {
       sheet =
       {
-        filename = "__leighzerverylonghandedinserter__/graphics/entity/inserter/inserter-platform.png",
+        filename = "__leighzerverylonghandedinserter__/graphics/entity/very-long-handed-inserter/very-long-handed-inserter-platform.png",
         priority = "extra-high",
         width = 46,
         height = 46,
         shift = {0.09375, 0},
         hr_version =
         {
-          filename = "__leighzerverylonghandedinserter__/graphics/entity/inserter/hr-inserter-platform.png",
+          filename = "__leighzerverylonghandedinserter__/graphics/entity/very-long-handed-inserter/hr-very-long-handed-inserter-platform.png",
           priority = "extra-high",
           width = 105,
           height = 79,
@@ -219,11 +218,52 @@ data:extend({
     circuit_connector_sprites = circuit_connector_definitions["inserter"].sprites,
     circuit_wire_max_distance = inserter_circuit_wire_max_distance,
     default_stack_control_input_signal = inserter_default_stack_control_input_signal
-  }
+  },
+
+  {
+    type = "corpse",
+    name = "very-long-handed-inserter-remnants",
+    icon = "__leighzerverylonghandedinserter__/graphics/icons/very-long-handed-inserter.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup = "inserter-remnants",
+    order = "a-c-b",
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    animation = make_rotated_animation_variations_from_sheet (4,
+    {
+      filename = "__leighzerverylonghandedinserter__/graphics/entity/very-long-handed-inserter/remnants/very-long-handed-inserter-remnants.png",
+      line_length = 1,
+      width = 68,
+      height = 48,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(4, -2),
+      hr_version =
+      {
+        filename = "__leighzerverylonghandedinserter__/graphics/entity/very-long-handed-inserter/remnants/hr-very-long-handed-inserter-remnants.png",
+        line_length = 1,
+        width = 134,
+        height = 94,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(3.5, -2),
+        scale = 0.5
+      }
+    })
+  },
 })
 
-if data.raw.technology["logistics-2"] then
-  table.insert(data.raw.technology["logistics-2"].effects,{
+if data.raw.technology["automation-2"] then
+  table.insert(data.raw.technology["automation-2"].effects,{
     type = "unlock-recipe",
     recipe = "very-long-handed-inserter"
   })
